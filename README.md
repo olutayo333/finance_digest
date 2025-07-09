@@ -28,9 +28,6 @@ Clicking on a news item opens the full article in a new tab
 
 Error handling: Displays a user-friendly message if the API request fails
 
-📡 API Details
-Endpoint: https://finnhub.io/api/v1/news?category=general&token=crals9pr01qhk4bqotb0crals9pr01qhk4bqotbg
-
 Category: general
 
 Fields mapped:
