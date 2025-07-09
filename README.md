@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+This is a responsive News Aggregator built with Next.js, TypeScript, Tailwind CSS, and Axios. It fetches and displays general market news using the Finnhub API.
 
-## Getting Started
+🚀 Technologies Used
+Next.js – React framework for SSR & SSG
 
-First, run the development server:
+TypeScript – Strongly-typed JavaScript
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Tailwind CSS – Utility-first CSS framework
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Axios – Promise-based HTTP client for the browser and Node.js
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+🔧 Features
+Fetches General category market news from Finnhub API
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Displays news in a clean, scrollable list with:
 
-## Learn More
+Thumbnail (image)
 
-To learn more about Next.js, take a look at the following resources:
+Source (source)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Date (datetime)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Title (headline)
 
-## Deploy on Vercel
+Fully responsive UI, optimized for mobile, tablet, and desktop
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Clicking on a news item opens the full article in a new tab
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Error handling: Displays a user-friendly message if the API request fails
+
+📡 API Details
+Endpoint: https://finnhub.io/api/v1/news?category=general&token=crals9pr01qhk4bqotb0crals9pr01qhk4bqotbg
+
+Category: general
+
+Fields mapped:
+
+Thumbnail: image
+
+Source: source
+
+Date: datetime (converted to readable format)
+
+Title: headline
+
+🖼️ UI/UX
+The app matches the provided design mockups pixel-perfectly, maintaining:
+
+Visual consistency
+
+Clear spacing and hierarchy
+
+Responsive layout for all screen sizes and orientations
+
+⚠️ Error Handling
+If the API request fails:
+
+A clear error message is shown to the user
+
+The app will not crash or break the UI
