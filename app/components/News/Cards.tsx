@@ -1,17 +1,10 @@
 
-import { NewsArticle } from "@/types/news";
+import { CardsProps, NewsArticle } from "@/types/news";
 import React from "react";
 import Image from "next/image";
 import ImagePlaceholder from "@/public/images/ImagePlaceholder.png";
 import Skeleton from "./Skeleton";
 import { FaRegFolderClosed } from "react-icons/fa6";
-
-interface CardsProps {
-  loading: boolean;
-  errorMessage: string;
-  newsData: NewsArticle[] | undefined;
-  formatDate: (unixSeconds: number) => string;
-}
 
 const Cards: React.FC<CardsProps> = ({
   loading,
@@ -22,12 +15,12 @@ const Cards: React.FC<CardsProps> = ({
   return (
     <section className="p-2 space-y-2">
       {/* === Page Title === */}
-      <label className="lg:text-[48px] text-[20px] lg:font-[600] tracking-wide p-2">
+      <label className="lg:text-[48px] text-[24px] font-bold lg:tracking-wide p-2">
         NEWS
       </label>
 
       {/* === Cards Grid Container === */}
-      <div className="p-5 gap-4 grid lg:grid-cols-4 grid-cols-1">
+      <div className="lg:p-5 p-2 lg:gap-4 grid lg:grid-cols-4 grid-cols-1">
         {loading ? (
           // === Loading State: Show Skeletons ===
           Array.from({ length: 12 }).map((_, i) => (
@@ -41,11 +34,11 @@ const Cards: React.FC<CardsProps> = ({
           newsData.map((article, index) => (
             <div
               key={article?.id ?? index}
-              className="shadow-md p-4 cursor-pointer hover:bg-[#2a283e] w-full"
+              className="shadow-md lg:p-4 p-0 cursor-pointer transition-colors duration-500 hover:bg-[#2a283e] w-full flex lg:flex-col flex-row lg:gap-0 gap-5 my-3"
               onClick={() => window.open(article?.url, "_blank")}
             >
               {/* === Image === */}
-              <div className="w-full h-48 overflow-hidden my-2">
+              <div className="lg:w-full w-[33%] lg:h-48 h-24 overflow-hidden ">
                 <Image
                   src={article?.image || ImagePlaceholder}
                   alt={article?.headline || "News Image"}
@@ -56,19 +49,31 @@ const Cards: React.FC<CardsProps> = ({
               </div>
 
               {/* === Source & Date === */}
-              <p className="flex justify-between items-center lg:font-[400] lg:text-[12px] text-[#b6b6b8]">
-                <span>{article?.source?.toUpperCase() ?? ""}</span>
-                <span>{formatDate(article?.datetime)?.toUpperCase() ?? ""}</span>
-              </p>
+              <div className="lg:w-full w-[66%]">
+                <p className="flex justify-between items-center lg:font-[400] text-[12px] text-[#b6b6b8] lg:my-2">
+                  <span>{article?.source?.toUpperCase() ?? ""}</span>
+                  <span>{formatDate(article?.datetime)?.toUpperCase() ?? ""}</span>
+                </p>
 
-              {/* === Summary Text (Truncated) === */}
-              <p className="text-white font-semibold lg:text-[20px] lg:font-[500] my-2">
-                {article?.summary
-                  ? article.summary.length > 120
-                    ? `${article.summary.slice(0, 120)}...`
-                    : article.summary
-                  : ""}
-              </p>
+                {/* === Summary Text (Truncated) === */}
+                {/* Desktop view */}
+                <p className="hidden lg:block text-white font-semibold lg:text-[20px] lg:font-semibold lg:my-2 ">
+                  {article?.summary
+                    ? article.summary.length > 120
+                      ? `${article.summary.slice(0, 120)}...`
+                      : article.summary
+                    : ""}
+                </p>
+
+                {/* Mobile view */}
+                <p className="lg:hidden text-white font-semibold  ">
+                  {article?.summary
+                    ? article.summary.length > 67
+                      ? `${article.summary.slice(0, 67)}...`
+                      : article.summary
+                    : ""}
+                </p>
+              </div>
             </div>
           ))
         ) : (

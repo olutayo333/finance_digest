@@ -9,3 +9,10 @@ export interface NewsArticle {
   summary: string;
   url: string;
 }
+
+export interface CardsProps {
+  loading: boolean;
+  errorMessage: string;
+  newsData: NewsArticle[] | undefined;
+  formatDate: (unixSeconds: number) => string;
+}
