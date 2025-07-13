@@ -47,7 +47,7 @@ const page = () => {
   };
 
   return (
-    <div className="p-2 space-y-2">
+    <div className="p-2 space-y-2 bg-black text-white">
       
       <section className="flex justify-center items-center mx-auto my-2 p-2 lg:border-none border-b border-[#272735] pb-5 lg:pb-0">
         <label className="lg:block hidden">
