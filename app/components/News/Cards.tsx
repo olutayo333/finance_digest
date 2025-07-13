@@ -13,7 +13,7 @@ const Cards: React.FC<CardsProps> = ({
   formatDate,
 }) => {
   return (
-    <section className="p-2 space-y-2 bg-black text-white">
+    <section className="p-2 space-y-2 ">
       {/* === Page Title === */}
       <label className="lg:text-[48px] text-[24px] font-bold lg:tracking-wide p-2">
         NEWS
